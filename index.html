@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Msg From Heart</title>
+    <link rel="icon" type="image/png" href="sorry.png">
+    <style>
+	/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fa9595; /* Pink color for the scrollbar thumb */
+    border-radius: 30px; /* Rounded corners for the thumb */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+::-webkit-scrollbar-track {
+    background: #e6e2e2; /* Light gray color for the scrollbar track */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect on Scrollbar */
+.scrollbar-hovered::-webkit-scrollbar-thumb {
+    background-color: #fd5964; /* Darker pink color on hover */
+}
+
+.scrollbar-hovered::-webkit-scrollbar-track {
+    background: #e6e3e3; /* Slightly darker gray on hover */
+}
+
+/* Firefox Scrollbar Styling */
+.content {
+    scrollbar-width: thick; /* Thin scrollbar for Firefox */
+    scrollbar-color: #fa9595 #e6e2e2; /* Pink thumb, Light gray track */
+}
+
+.scrollbar-hovered {
+    scrollbar-color: #ff717a #e6e3e3; /* Darker pink thumb, darker gray track on hover */
+}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            animation: backgroundFade 10s infinite alternate;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        @keyframes backgroundFade {
+            0% { background: linear-gradient(135deg, #ff9a9e, #fecfef, #fad0c4); }
+            50% { background: linear-gradient(135deg, #a18cd1, #fbc2eb, #fad0c4); }
+            100% { background: linear-gradient(135deg, #ff9a9e, #ffdde1, #ffefba); }
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+        }
+
+        .doors {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 1000;
+            overflow: hidden;
+            opacity: 1;
+            animation: doorsFadeOut 2.5s ease-in-out forwards 2.5s;
+        }
+
+        @keyframes doorsFadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .door {
+            flex: 1;
+            background: #ff9a9e;
+            animation: doorOpen 2.5s ease-in-out forwards;
+        }
+
+        .door:nth-child(2) {
+            background: #fad0c4;
+        }
+
+        @keyframes doorOpen {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .door:first-child {
+            animation: doorOpenLeft 2.5s ease-in-out forwards;
+        }
+
+        @keyframes doorOpenLeft {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .doors.hide {
+            display: none;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #f0eeee, #ebeaea);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transform: scale(0.95);
+            animation: cardPop 1s ease-in-out forwards;
+        }
+        .card:hover {
+    transform: scale(1.02); /* Slightly scale up the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Increase shadow */
+}
+
+        @media (max-width: 480px) {
+            .card {
+                width: 90%;
+                margin-top: 0; /* Ensure no extra margin on mobile */
+            }
+            .content p {
+                font-size: 16px;
+            }
+        }
+
+        @keyframes cardPop {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .header {
+          background-color: #ff9a9e ;
+            padding: 25px;
+            text-align: center;
+            font-family: "serif", sans-serif; /* You can change to any built-in font */
+            color: rgb(255, 254, 254);
+            border: #1f1c1c;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .header:hover {
+    background: linear-gradient(135deg, #ff717a, #fa9595); /* Change background color */
+}
+
+        .content {
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #fff, #f3f3f3);
+        }
+
+        .content p {
+            margin: 0 0 15px;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #555;
+            transition: color 0.3s ease; /* Add transition for smooth effect */
+        }
+        .content p:hover {
+            font-style: italic; /* Italic text */
+            font-weight: 600; /* Slightly bold */
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text; /* Clip background to text */
+            -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
+            background-clip: text; /* Standard property for background clipping */
+            color: transparent; /* Fallback for older browsers */
+        }
+        .content p:hover .highlight {
+    background: none; /* Remove gradient for highlighted text */
+    -webkit-text-fill-color: #f59e0b; /* Restore original color */
+    color: #f59e0b; /* Fallback for older browsers */
+}
+
+        .content p span {
+            color: #ff717a;
+            font-weight: bold;
+        }
+ 
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #fad0c4, #ffe3e3);
+            font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+			color: #555;
+            font-style: italic;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .footer:hover {
+    background: linear-gradient(135deg, #ffe3e3, #fad0c4); /* Change background color */
+}
+
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff717a, #ff9a9e);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+			text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+    background: linear-gradient(135deg, #ff4754, #ff717a);
+    transform: scale(1.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px; /* Add a slight letter-spacing effect */
+}
+
+        .button:focus {
+            outline: 2px solid #ff717a;
+            outline-offset: 2px;
+        }
+
+        .button:active {
+            transform: scale(1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .highlight {
+            color: #ff717a;
+            font-weight: bold;
+        }
+        .highlight:hover {
+    color: #f59e0b; /* Change text color */
+}
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            const doors = document.querySelector(".doors");
+            setTimeout(() => doors.classList.add("hide"), 5000);
+        });
+    </script>
+</head>
+<body>
+    <div class="doors">
+        <div class="door"></div>
+        <div class="door"></div>
+    </div>
+    <div class="card">
+        <div class="header">A Dark Message</div>
+        <div class="content">
+            <p>Hello, <span class="highlight">Amaira sheikh</span>,</p>
+            <p>Thank you for here despite everything.</p>
+            <p>I realize you've made a mistakes—mistakes that might have deserved being blocked—but I hope you’ll read this message with an open and understanding heart. It took me so much time to gather my thoughts and pen this down.</p>
+            <p>[I just wanted to take a moment to tell you how much you mean to me. Life has blessed me in many ways, but one of the greatest blessings has been having you as my friend. You are not just someone I talk to—you are someone I trust, someone who understands me even when I struggle to express myself, and someone who always makes my life brighter with your presence.
+
+                From the little things like random conversations and inside jokes to the big moments where we’ve supported each other through life’s ups and downs, I cherish every memory we’ve created. You are the kind of friend who brings comfort when I’m down, joy when I need a reason to smile, and strength when I feel like giving up.
+                
+                One of the things I admire most about you is your kindness. You have a heart that cares deeply, and your ability to spread positivity around you is truly inspiring. No matter what happens, I want you to know that I will always be here for you—just like you have been there for me. Whether it’s a tough day, an exciting new opportunity, or just a moment when you need someone to listen, I’ll always have your back.
+                
+                Life may change, circumstances may shift, and people may come and go, but our friendship is something I hope will remain strong no matter what. I appreciate you more than words can express, and I am so grateful to have you in my life.
+                
+                Thank you for being the incredible person you are. You are truly one of a kind, and I am so lucky to call you my best friend.]</p>
+        </div>
+        <div class="footer">
+            <a href="#" class="button" onclick="alert('Thank you for taking the time to read this. I appreciate it more than words can express!')">Click Me</a>
+        </div>
+    </div>
+    <!-- JavaScript for Scrollbar Hover Effect -->
+    <script>
+      // Function to detect scrollbar hover
+      function detectScrollbarHover() {
+          const content = document.querySelector('.content');
+
+          // Add event listener for mouse entering the scrollbar
+          content.addEventListener('mouseenter', (e) => {
+              // Check if the mouse is over the scrollbar
+              if (e.offsetX > content.clientWidth) {
+                  content.classList.add('scrollbar-hovered');
+              }
+          });
+
+          // Remove the class when the mouse leaves the scrollbar
+          content.addEventListener('mouseleave', () => {
+              content.classList.remove('scrollbar-hovered');
+          });
+      }
+
+      // Run the function when the page loads
+      window.addEventListener('load', detectScrollbarHover);
+  </script>
+</body>
+</html>
